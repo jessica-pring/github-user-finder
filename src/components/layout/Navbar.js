@@ -16,7 +16,7 @@ export class Navbar extends Component {
     return (
       <nav className="navbar">
         <h4>
-          <i className={this.props.icon}></i> {this.props.title}
+          <i className={this.props.icon}></i>  {this.props.title}
         </h4>
       </nav>
     )
