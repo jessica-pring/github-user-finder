@@ -1,7 +1,7 @@
 import './App.css';
 import React, { Component } from "react";
 import Navbar from "./components/layout/Navbar";
-import UserItem from './components/users/UserItem';
+import Users from './components/users/Users';
 
 // Render Users component
 //    UserItems rendered within Users
@@ -13,7 +13,9 @@ class App extends Component {
       <div className="App">
         <Navbar title='GitHub User Finder' icon='fab fa-github' />
 
-        <UserItem />
+        <div className="container">
+          <Users />
+        </div>
       </div>
     );
   }
