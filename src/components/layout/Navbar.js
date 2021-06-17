@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-const Navbar = (props) => {
+const Navbar = ({ icon, title }) => {
   return (
     <nav className="navbar">
       <h4>
-        <i className={props.icon}></i>  {props.title}
+        <i className={icon}></i>  {title}
       </h4>
     </nav>
   )
