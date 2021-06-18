@@ -20,6 +20,32 @@ class App extends Component {
     this.setState({ users: res.data, loading: false })
   }
 
+  // // Alternative to axios using fetch
+
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     users: [],
+  //     loading: false
+  //   }
+
+  //   const getData = async() => {
+  //     this.setState({ loading: true });
+
+  //     let res = await fetch(`https://api.github.com/users?
+  //       client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&
+  //       client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+
+  //     let data = await res.json();
+  //     return data;
+  //   }
+
+  //   getData().then((data) => {
+  //     this.setState({ users: data, loading: false })
+  //   })
+  // }
+
+
   render() {
     return (
       <div className="App">
