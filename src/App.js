@@ -21,6 +21,16 @@ class App extends Component {
     this.setState({ users: res.data, loading: false })
   }
 
+  searchUsers = async (text) => {
+    this.setState({ loading: true })
+
+    const res = await axios.get(`https://api.github.com/search/users?q=${text}&
+      client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&
+      client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+
+    this.setState({ users: res.data.items, loading: false })
+  }
+
   // // Alternative to axios using fetch
 
   // constructor() {
@@ -53,7 +63,8 @@ class App extends Component {
         <Navbar title='GitHub User Finder' icon='fab fa-github' />
 
         <div className="container">
-          <Search />
+          {/* Props being passed up from search query */}
+          <Search searchUsers={this.searchUsers} />
           <Users users={this.state.users} loading={this.state.loading} />
         </div>
       </div>
