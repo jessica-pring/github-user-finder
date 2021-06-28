@@ -34,6 +34,10 @@ class App extends Component {
     this.setState({ users: res.data.items, loading: false })
   }
 
+  // Clear users from state
+  clearUsers = () => this.setState({ users: [], loading: false });
+
+
   // // Alternative to axios using fetch
 
   // constructor() {
@@ -62,14 +66,20 @@ class App extends Component {
 
   // Renders the app
   render() {
+    const { users, loading } = this.state;
+
     return (
       <div className="App">
         <Navbar title='GitHub User Finder' icon='fab fa-github' />
 
         <div className="container">
           {/* Props being passed up from search query */}
-          <Search searchUsers={this.searchUsers} />
-          <Users users={this.state.users} loading={this.state.loading} />
+          <Search
+            searchUsers={this.searchUsers}
+            clearUsers={this.clearUsers}
+            showClear={ users.length > 0 ? true : false }
+          />
+          <Users users={users} loading={loading} />
         </div>
       </div>
     );
