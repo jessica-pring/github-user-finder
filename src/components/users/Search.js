@@ -9,7 +9,8 @@ class Search extends Component {
   static propTypes = {
     searchUsers: PropTypes.func.isRequired,
     clearUsers: PropTypes.func.isRequired,
-    showClear: PropTypes.bool.isRequired
+    showClear: PropTypes.bool.isRequired,
+    setAlert: PropTypes.func.isRequired
   }
 
   // Tracks changes in the searchbar: text input
@@ -20,9 +21,13 @@ class Search extends Component {
   // When submit btn is clicked
   onSubmit = (e) => {
     e.preventDefault();
-    // Passes search query as props up to App
-    this.props.searchUsers(this.state.text);
-    this.setState({ text: '' });
+    if(this.state.text === '') {
+      this.props.setAlert('Please enter something', 'light');
+    } else {
+      // Passes search query as props up to App
+      this.props.searchUsers(this.state.text);
+      this.setState({ text: '' });
+    }
   }
   
   render() {

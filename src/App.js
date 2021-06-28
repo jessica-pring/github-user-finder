@@ -3,13 +3,15 @@ import React, { Component } from "react";
 import Navbar from "./components/layout/Navbar";
 import Users from './components/users/Users';
 import Search from './components/users/Search';
+import Alert from './components/layout/Alert';
 import axios from 'axios';
 
 class App extends Component {
   // Defines the state of the component
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   }
 
   // Async function to read API data and save to this state's users
@@ -37,32 +39,10 @@ class App extends Component {
   // Clear users from state
   clearUsers = () => this.setState({ users: [], loading: false });
 
-
-  // // Alternative to axios using fetch
-
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     users: [],
-  //     loading: false
-  //   }
-
-  //   const getData = async() => {
-  //     this.setState({ loading: true });
-
-  //     let res = await fetch(`https://api.github.com/users?
-  //       client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&
-  //       client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-
-  //     let data = await res.json();
-  //     return data;
-  //   }
-
-  //   getData().then((data) => {
-  //     this.setState({ users: data, loading: false })
-  //   })
-  // }
-
+  // Set alert
+  setAlert = (msg, type) => {
+    this.setState({ alert: { msg: msg, type: type } });
+  }
 
   // Renders the app
   render() {
@@ -73,11 +53,13 @@ class App extends Component {
         <Navbar title='GitHub User Finder' icon='fab fa-github' />
 
         <div className="container">
-          {/* Props being passed up from search query */}
+          < Alert alert={this.state.alert} />
+          {/* Props being passed up from search query // prop drilling */}
           <Search
             searchUsers={this.searchUsers}
             clearUsers={this.clearUsers}
             showClear={ users.length > 0 ? true : false }
+            setAlert={this.setAlert}
           />
           <Users users={users} loading={loading} />
         </div>
