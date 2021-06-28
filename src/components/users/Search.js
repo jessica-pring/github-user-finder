@@ -10,10 +10,12 @@ class Search extends Component {
     searchUsers: PropTypes.func.isRequired
   }
 
+  // Tracks changes in the searchbar: text input
   onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value });
   }
 
+  // When submit btn is clicked
   onSubmit = (e) => {
     e.preventDefault();
     // Passes search query as props up to App
@@ -32,7 +34,8 @@ class Search extends Component {
             value={this.state.text}
             onChange={this.onChange}
           />
-          <input type="submit"
+          <input
+            type="submit"
             value="Search"
             className='btn btn-dark btn-block'
           />
