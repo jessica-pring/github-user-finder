@@ -6,11 +6,13 @@ import Search from './components/users/Search';
 import axios from 'axios';
 
 class App extends Component {
+  // Defines the state of the component
   state = {
     users: [],
     loading: false
   }
 
+  // Async function to read API data and save to this state's users
   async componentDidMount() {
     this.setState({ loading: true });
 
@@ -21,6 +23,7 @@ class App extends Component {
     this.setState({ users: res.data, loading: false })
   }
 
+  // Function to search API for a specific user
   searchUsers = async (text) => {
     this.setState({ loading: true })
 
@@ -57,6 +60,7 @@ class App extends Component {
   // }
 
 
+  // Renders the app
   render() {
     return (
       <div className="App">
