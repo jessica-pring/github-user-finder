@@ -112,7 +112,7 @@ img {
 /* Cards */
 .card {
   padding: 1rem;
-  border: #20c997 1px dotted;
+  border: var(--primary-color) 1px dotted;
   margin: 0.7rem 0;
 }
 
@@ -296,7 +296,7 @@ img {
 
 .btn:hover {
   opacity: 0.8;
-  color: #20c997;
+  color: var(--primary-color);
 }
 
 .bg-light,
