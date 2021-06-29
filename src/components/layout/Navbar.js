@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const Navbar = ({ icon, title }) => {
@@ -21,4 +21,4 @@ Navbar.propTypes = {
   icon: PropTypes.string.isRequired
 }
 
-export default Navbar
+export default Navbar;
