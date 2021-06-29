@@ -1,5 +1,6 @@
 import './App.css';
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from "./components/layout/Navbar";
 import Users from './components/users/Users';
 import Search from './components/users/Search';
@@ -53,21 +54,36 @@ class App extends Component {
     const { users, loading } = this.state;
 
     return (
-      <div className="App">
-        <Navbar title='GitHub User Finder' icon='fab fa-github' />
+      <Router>
+        <div className="App">
+          <Navbar title='GitHub User Finder' icon='fab fa-github' />
 
-        <div className="container">
-          < Alert alert={this.state.alert} />
-          {/* Props being passed up from search query // prop drilling */}
-          <Search
-            searchUsers={this.searchUsers}
-            clearUsers={this.clearUsers}
-            showClear={ users.length > 0 ? true : false }
-            setAlert={this.setAlert}
-          />
-          <Users users={users} loading={loading} />
+          <div className="container">
+            < Alert alert={this.state.alert} />
+
+            <Switch>
+              {/* Home */}
+              <Route exact path='/' render={props => (
+                <Fragment>
+                  {/* Props being passed up from search query // prop drilling */}
+                  <Search
+                    searchUsers={this.searchUsers}
+                    clearUsers={this.clearUsers}
+                    showClear={ users.length > 0 ? true : false }
+                    setAlert={this.setAlert}
+                  />
+                  <Users users={users} loading={loading} />
+                </Fragment>
+              )}/>
+
+              {/* About */}
+              <Route exact path='/about' >
+                <About />
+              </Route>
+            </Switch>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
