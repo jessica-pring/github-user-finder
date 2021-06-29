@@ -77,9 +77,8 @@ class App extends Component {
               )}/>
 
               {/* About */}
-              <Route exact path='/about' >
-                <About />
-              </Route>
+              <Route exact path='/about' component={About} />
+
             </Switch>
           </div>
         </div>
