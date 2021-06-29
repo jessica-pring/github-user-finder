@@ -42,6 +42,9 @@ class App extends Component {
   // Set alert
   setAlert = (msg, type) => {
     this.setState({ alert: { msg: msg, type: type } });
+
+    // Alert disappears after 5 seconds
+    setTimeout(() => this.setState({ alert: null }), 5000);
   }
 
   // Renders the app
