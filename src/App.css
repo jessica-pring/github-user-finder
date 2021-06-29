@@ -205,8 +205,9 @@ img {
   border: none;
   cursor: pointer;
   margin-right: 0.5rem;
-  transition: opacity 0.2s ease-in;
+  transition: opacity 0.1s ease-in;
   outline: none;
+  border-radius: 6px;
 }
 
 .btn-link {
