@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
-import { jsxFragment } from '@babel/types';
 
 export class User extends Component {
   // Passes the user state to User component
