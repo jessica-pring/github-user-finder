@@ -80,7 +80,7 @@ class App extends Component {
     const { users, user, repos, loading } = this.state;
 
     return (
-      <Router>
+      <Router basename='/github-user-finder' >
         <div className="App">
           <Navbar title='GitHub User Finder' icon='fab fa-github' />
 
